@@ -1,3 +1,5 @@
+/*global chrome*/
+
 import React, { useState, useEffect } from 'react';
 const PRODUCT_DETAILS_TABLE_NAME = "productDetails_techSpec_section_1";
 const MOCK_PRODUCT = "20E1H"
@@ -57,6 +59,12 @@ function Home() {
             // getCurrentProductData()
             // setCurrentProductData(data)
         }
+
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (response) {
+                console.log(response.farewell);
+            });
+        });
     }, [])
 
 

@@ -9,5 +9,5 @@
   },
   "content_security_policy": "script-src 'self' 'sha256-OcNZFfo45086znyJAiRN9sPB9cpsGtenzZkkH/k5vsE='; object-src 'self'",
   "content_scripts": [{ "matches": ["<all_urls>"], "js": ["script.js"] }],
-  "permissions": []
+  "permissions": ["activeTab"]
 }
