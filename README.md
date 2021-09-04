@@ -11,3 +11,7 @@ npm run build
 open chrome and go to URL 'chrome://extensions/'
 select 'load unpacked' and select the build folder of this project
 after this initial setup you only have to update the extension after rebuilding the project
+
+# Overview
+
+script.js is injected into Chrome on startup, this will send product model number to the extension to be used

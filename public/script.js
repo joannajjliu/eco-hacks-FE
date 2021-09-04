@@ -3,9 +3,7 @@ const PRODUCT_DETAILS_TABLE_NAME = "productDetails_techSpec_section_1";
 
 // returns product model number
 const findProductModelNumber = (id) => {
-  console.log(id);
   const productDetailsTable = document.getElementById(id);
-  console.log("product table", productDetailsTable);
   for (var i = 0, row; (row = productDetailsTable.rows[i]); i++) {
     const subTitle = row.cells[0].textContent;
 
@@ -17,8 +15,8 @@ const findProductModelNumber = (id) => {
 };
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.greeting === "hello")
+  if (request.getProductModelNumber)
     sendResponse({
-      farewell: findProductModelNumber(PRODUCT_DETAILS_TABLE_NAME),
+      productModelNumber: findProductModelNumber(PRODUCT_DETAILS_TABLE_NAME),
     });
 });

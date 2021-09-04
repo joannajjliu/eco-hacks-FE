@@ -1,33 +1,17 @@
 /*global chrome*/
 
 import React, { useState, useEffect } from 'react';
-const PRODUCT_DETAILS_TABLE_NAME = "productDetails_techSpec_section_1";
 const MOCK_PRODUCT = "20E1H"
 
 function Home() {
 
     const [currentProductData, setCurrentProductData] = useState()
-
+    const [currentProductModelNumber, setCurrentProductModelNumber] = useState()
     // later if needed
     // myHeaders = new Headers({
     //   Authorization: "Token " + process.env.API_TOKEN,
     //   "Content-Type": "application/x-www-form-urlencoded",
     // });
-
-    // returns product model number
-    const findProductModelNumber = (id) => {
-        console.log(id)
-        const productDetailsTable = document.getElementById(id);
-        console.log("product table", productDetailsTable);
-        for (var i = 0, row; (row = productDetailsTable.rows[i]); i++) {
-            const subTitle = row.cells[0].textContent;
-
-            // subtitle in table matching the title "Item model number"
-            if (subTitle.includes("model")) {
-                return row.cells[1].textContent;
-            }
-        }
-    };
 
     // search product model number with Energy Star API
     const searchModelEnergyStarData = async (model) => {
@@ -40,9 +24,17 @@ function Home() {
         return response[0]
     };
 
+    // messaging between chrome and extension, see public/script.js
+    const getFromChrome = () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { getProductModelNumber: true }, function (response) {
+                setCurrentProductModelNumber(response.productModelNumber)
+            });
+        });
+    }
+
 
     useEffect(() => {
-
         if (process.env.REACT_APP_USE_MOCK) {
             const getCurrentProductData = async () => {
                 const productData = await searchModelEnergyStarData(MOCK_PRODUCT)
@@ -51,21 +43,20 @@ function Home() {
             getCurrentProductData()
 
         } else {
-            // const getCurrentProductData = async () => {
-            //     const productModelNumber = findProductModelNumber(PRODUCT_DETAILS_TABLE_NAME);
-            //     const productData = await searchModelEnergyStarData(productModelNumber)
-            //     setCurrentProductData(productData)
-            // }
-            // getCurrentProductData()
-            // setCurrentProductData(data)
+            getFromChrome()
         }
-
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (response) {
-                console.log(response.farewell);
-            });
-        });
     }, [])
+
+    useEffect(() => {
+        const getCurrentProductData = async () => {
+            if (currentProductModelNumber) {
+                const productData = await searchModelEnergyStarData(currentProductModelNumber)
+                setCurrentProductData(productData)
+            }
+        }
+        getCurrentProductData()
+
+    }, [currentProductModelNumber])
 
 
     return (
