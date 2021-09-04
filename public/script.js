@@ -15,8 +15,9 @@ const findProductModelNumber = (id) => {
 };
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.getProductModelNumber)
+  if (request.getProductModelNumber) {
     sendResponse({
       productModelNumber: findProductModelNumber(PRODUCT_DETAILS_TABLE_NAME),
     });
+  }
 });

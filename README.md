@@ -1,6 +1,6 @@
 # Testing locally on browser (Not the extension, see below for testing extension)
 
-npm run start-mock
+npm run start-mock (no mock available atm)
 
 # Build
 
