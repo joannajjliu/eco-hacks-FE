@@ -1,8 +1,15 @@
 /*global chrome*/
 
 import React, { useState, useEffect } from "react";
+import Product from "./Product";
+import EnergyAnalysis from "./EnergyAnalysis";
+import ProductComparisonAnalysis from "./ProductComparisonAnalysis";
 import styles from "./Home.css";
 import { energyPrices } from "../energyPrices";
+import BarChart from "./BarChart";
+
+import { data } from "../mocks/data";
+
 const MOCK_PRODUCT = "20E1H";
 
 function Home() {
@@ -43,9 +50,9 @@ function Home() {
     return kwhPerYear * energyPrices.ontario;
   };
 
-  useEffect(() => {
-    getFromChrome();
-  }, []);
+  // useEffect(() => {
+  //   getFromChrome();
+  // }, []);
 
   useEffect(() => {
     const getCurrentProductData = async () => {
@@ -72,6 +79,10 @@ function Home() {
           parseInt(currentProductData.monitor_total_energy)
         )}
       </div> */}
+      <Product />
+      <EnergyAnalysis />
+      <ProductComparisonAnalysis />
+      {/* <BarChart data={data} /> */}
     </div>
   );
 }
