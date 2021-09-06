@@ -134,6 +134,7 @@ function Home() {
           <ProductComparisonAnalysis
             productType={currentProductData.display_type}
             numNonEnergyStarCost={AVG_CAD_MONITOR_COST}
+            kwhPerYear={currentProductData.monitor_total_energy}
           />
         </>
       ) : (

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import ProgressBar from "@ramonak/react-progress-bar";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { energyPrices } from "../energyPrices";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -35,28 +36,18 @@ function ProductComparisonAnalysis({
   productType = "fridge",
   numProductListingSavings = 2000,
   numNonEnergyStarCost = 500,
+  kwhPerYear,
 }) {
   const savingsTitle = "Savings per year compared to other similar products";
   const productListingTitle = "Product listing savings";
   const averageNonEnergystarTitle = `Average non-energy star ${productType}`;
-
+  const costPerYear = "Cost per year based off Ontario average energy price";
   return (
     <>
       <div>
-        <h3>{savingsTitle}</h3>
-      </div>
-      {/* <div>
-        <h2>{productListingTitle}</h2>
+        <h2>{costPerYear}</h2>
         <div className="singleRow">
-          <BorderLinearProgressPrimary variant="determinate" value={50} />
-          <h3>${numProductListingSavings}</h3>
-        </div>
-      </div> */}
-      <div>
-        <h2>{averageNonEnergystarTitle}</h2>
-        <div className="singleRow">
-          <BorderLinearProgressSecondary variant="determinate" value={50} />
-          <h3>${numNonEnergyStarCost}</h3>
+          <h1>${parseFloat(kwhPerYear) * energyPrices.ontario}</h1>
         </div>
       </div>
     </>
