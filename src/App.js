@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import Home from "./Components/Home";
+import "./App.css";
+import {
+  ProductContextProvider,
+  ProductContext,
+  DAILY_AVG_HOURS_SCREEN_TIME,
+  AVG_DAYS_IN_YEAR,
+  POUNDS_CO2_EMISSIONS_PER_KWH_USING_NATURAL_GAS,
+} from "./ProductContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProductContextProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </ProductContextProvider>
   );
 }
 
