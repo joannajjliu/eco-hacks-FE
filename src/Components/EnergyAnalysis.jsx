@@ -8,9 +8,9 @@ function EnergyAnalysis({
 }) {
   const energyUsage = "Annual Energy Usage";
   const co2Emissions = "Product usage Co2 emissions";
-  const treesEquivalent = `Equivalent to ${numTreesEquivalent} ${
-    numTreesEquivalent !== 1 ? "trees" : "tree"
-  } workload`;
+  const treesEquivalent = `Equivalent to ${
+    numTreesEquivalent > 0 ? numTreesEquivalent : 1
+  } ${numTreesEquivalent <= 1 ? "tree" : "trees"} workload`;
 
   return (
     <>
