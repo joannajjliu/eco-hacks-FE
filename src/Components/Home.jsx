@@ -50,9 +50,9 @@ function Home() {
     return kwhPerYear * energyPrices.ontario;
   };
 
-  // useEffect(() => {
-  //   getFromChrome();
-  // }, []);
+  useEffect(() => {
+    getFromChrome();
+  }, []);
 
   useEffect(() => {
     const getCurrentProductData = async () => {
