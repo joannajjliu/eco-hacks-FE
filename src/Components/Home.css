@@ -34,6 +34,14 @@ h3 {
   margin: 10px 0;
 }
 
+.logo {
+  background-image: url('../EcoChecker_logo.png');
+  background-repeat: no-repeat;
+  height: 40px;
+  background-size: 200px;
+  margin-bottom: 10px;
+}
+
 .flexColumn {
   display: flex;
   justify-content: space-between;

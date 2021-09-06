@@ -137,7 +137,9 @@ function Home() {
           />
         </>
       ) : (
-        <h1>This product is not Energy Star rated</h1>
+        <>
+          <h1>This product is not Energy Star rated</h1>
+        </>
       )}
     </div>
   );

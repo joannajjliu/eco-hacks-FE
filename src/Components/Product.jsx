@@ -23,7 +23,8 @@ function Product({
 
   return (
     <>
-      <h1>{title}</h1>
+      <div className="logo"></div>
+      {/* <h1>{title}</h1> */}
       <div className="flexColumn">
         <div>
           <>
