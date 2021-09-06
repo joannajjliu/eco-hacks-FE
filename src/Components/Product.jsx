@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import rd3 from "react-d3-library";
+import React, { useContext } from "react";
+import { ProductContext } from "../ProductContext";
 import CircleMeter from "./CircleMeter";
 
 function Product({
-  brandName = "Galanz GLR10TBKEFR",
+  brandName = "Galanz GLR10TBKEFR sdfsdfffffffffdsdfsdfsdf",
   brandProduct = "Freezer and refrigerator",
-  percentageEfficiency = 75,
+  percentageEfficiency = 0,
 }) {
+  const [state, dispatch] = useContext(ProductContext);
+  const { productDetails } = state;
   const title = "Product Energy Star Rating";
   const brand = "Brand";
   const product = "Product";
@@ -14,13 +16,10 @@ function Product({
   if (percentageEfficiency >= 80) {
     efficiencyTitle = "Highly energy efficient";
   } else if (percentageEfficiency >= 66) {
-    efficiencyTitle = "Energy efficient";
+    efficiencyTitle = "Good efficiency";
   } else {
-    efficiencyTitle = "Require upgrade";
+    efficiencyTitle = "Efficiency requires an upgrade";
   }
-  //   useEffect(() => {
-  //     setD3(node);
-  //   }, []);
 
   return (
     <>
@@ -38,7 +37,11 @@ function Product({
         </div>
         <div>
           <>
-            <CircleMeter percentageEfficiency={percentageEfficiency} />
+            {percentageEfficiency > 0 ? (
+              <CircleMeter percentageEfficiency={percentageEfficiency} />
+            ) : (
+              <></>
+            )}
             <h2>{efficiencyTitle}</h2>
           </>
         </div>

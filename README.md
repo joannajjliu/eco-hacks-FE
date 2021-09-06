@@ -23,3 +23,4 @@ script.js is injected into Chrome on startup, this will send product model numbe
 - [Setting up React app with D3 v6 or v7, using refs](https://www.pluralsight.com/guides/using-d3.js-inside-a-react-app)
 - [Medium article - create pie chart with d3 and react hooks](https://medium.com/stationfive/how-to-create-a-pie-chart-with-d3-js-and-react-hooks-part-1-81bcd7f39b32)
 - [Code sandbox d3 pie graph with hooks](https://codesandbox.io/s/r5wp0v08xq?from-embed)
+- [Codepen D3 circle meter example](https://codepen.io/herudea/pen/YpEeRW)

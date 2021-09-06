@@ -1,15 +1,16 @@
 import React from "react";
+import NatureOutlinedIcon from "@material-ui/icons/NatureOutlined";
 
 function EnergyAnalysis({
   numEnergyUsage = 1500,
   numCo2Emissions = 2,
-  numTreesEquivalent = 0,
+  numTreesEquivalent = 4,
 }) {
-  const energyUsage = "Energy Usage";
+  const energyUsage = "Annual Energy Usage";
   const co2Emissions = "Product usage Co2 emissions";
-  const treesEquivalent = `Equivalent to ${
+  const treesEquivalent = `Equivalent to ${numTreesEquivalent} ${
     numTreesEquivalent !== 1 ? "trees" : "tree"
-  } trees workload`;
+  } workload`;
 
   return (
     <>
@@ -26,6 +27,13 @@ function EnergyAnalysis({
       <div>
         <div>
           <h2>{treesEquivalent}</h2>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {[...Array(numTreesEquivalent > 0 ? numTreesEquivalent : 1)].map(
+              (_, i) => (
+                <NatureOutlinedIcon style={{ color: "#1C9EA9" }} key={i} />
+              )
+            )}
+          </div>
         </div>
       </div>
     </>

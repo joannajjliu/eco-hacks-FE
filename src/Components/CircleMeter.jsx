@@ -43,8 +43,6 @@ function CircleMeter({ percentageEfficiency = 75 }) {
           .outerRadius(radius)
       )
       .attr("fill", (d) => color(d.data[0]))
-      //   .attr("stroke", "black")
-      //   .style("stroke-width", "2px")
       .style("opacity", 0.7);
   }, []);
 
@@ -58,6 +56,28 @@ function CircleMeter({ percentageEfficiency = 75 }) {
       }}
     >
       <g ref={ref} transform="translate(56,56)" className="plot-area-circle" />
+      <text
+        x="50%"
+        y="45%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        font-family="Roboto, sans-serif"
+        fill="#1C9EA9"
+        font-size="28px"
+      >
+        {percentageEfficiency}/
+      </text>
+      <text
+        x="50%"
+        y="65%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        font-family="Roboto, sans-serif"
+        fill="#1C9EA9"
+        font-size="16px"
+      >
+        100
+      </text>
     </svg>
   );
 }
